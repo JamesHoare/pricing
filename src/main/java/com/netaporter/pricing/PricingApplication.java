@@ -1,3 +1,5 @@
+package com.netaporter.pricing;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
@@ -24,9 +26,8 @@ import javax.sql.DataSource;
 import java.util.EnumSet;
 
 /**
- * Bootstrap the application
+ * Created by jameshoare on 13/04/2014.
  */
-
 @Configuration
 @EnableAutoConfiguration
 @EnableJpaRepositories
@@ -36,6 +37,10 @@ public class PricingApplication {
     private static Log logger = LogFactory.getLog(PricingApplication.class);
 
 
+    public static void main(String[] args) {
+        SpringApplication.run(PricingApplication.class, args);
+
+    }
 
     @Bean
     public DataSource dataSource() {
@@ -47,7 +52,7 @@ public class PricingApplication {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource);
         lef.setJpaVendorAdapter(jpaVendorAdapter);
-        lef.setPackagesToScan("domain");
+        lef.setPackagesToScan("com.netaporter.pricing.domain");
         return lef;
     }
 
@@ -92,9 +97,5 @@ public class PricingApplication {
         };
     }
 
-    public static void main(String[] args) throws Exception {
-        SpringApplication.run(PricingApplication.class, args);
-    }
 
 }
-
