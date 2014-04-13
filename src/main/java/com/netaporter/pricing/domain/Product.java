@@ -1,17 +1,19 @@
 package com.netaporter.pricing.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Optional;
 
 /**
  * Product Domain
  */
 @Entity
-public class Product {
+public class Product implements ProductPricing {
 
 
     public Integer getProductId() {
@@ -42,7 +44,8 @@ public class Product {
 
     }
 
-    public Product() {}
+    Product() {
+    }
 
     @NotEmpty(message = "category is required")
     private String category;
@@ -56,6 +59,37 @@ public class Product {
 
     @NotEmpty(message = "decription is required")
     private String description;
+
+    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+    enum PRODUCT_TYPE {
+        SHIPPING, PACKAGING, VOUCHER, SUBSCRIPTION, WEARBALE
+    }
+
+    @JsonFormat(shape = JsonFormat.Shape.OBJECT)
+    public enum PRODUCT_AVAILABILITY {
+        INSTOCK {
+            @Override
+            public Optional<Boolean> isBuyable(PRODUCT_AVAILABILITY product_availability) {
+                return Optional.of(Boolean.TRUE);
+            }
+        },
+        OUT_OF_STOCK {
+            @Override
+            public Optional<Boolean> isBuyable(PRODUCT_AVAILABILITY product_availability) {
+                return Optional.of(Boolean.FALSE);
+            }
+        },
+        RESERVED {
+            @Override
+            public Optional<Boolean> isBuyable(PRODUCT_AVAILABILITY product_availability) {
+                return Optional.of(Boolean.FALSE);
+            }
+        };
+
+        public abstract Optional<Boolean> isBuyable(PRODUCT_AVAILABILITY product_availability);
+
+
+    }
 
 
 }
