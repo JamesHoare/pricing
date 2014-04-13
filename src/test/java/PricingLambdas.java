@@ -7,17 +7,14 @@ import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadFactory;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
 /**
- * Created by jameshoare on 13/04/2014.
+ * Testing some Java 8 Features for simulating product pricing in functional style
  */
-
 public class PricingLambdas {
 
     private final List<Product> products = Arrays.asList(new Product("Clothing"),
