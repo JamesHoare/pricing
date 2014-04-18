@@ -37,6 +37,13 @@ public class PricingLambdas {
         printPricesStream();
     }
 
+    @Test(expected = Throwable.class)
+    public void testExceptionally() {
+
+        new CompletableFuture().exceptionally(ex -> new Throwable());
+
+    }
+
     private static void execute(String msg, Supplier<List<Integer>> s) {
         long start = System.nanoTime();
         System.out.println(s.get());
