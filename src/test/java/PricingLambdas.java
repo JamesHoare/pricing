@@ -1,6 +1,5 @@
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -10,14 +9,16 @@ import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
+import static junit.framework.TestCase.assertEquals;
 
 /**
  * Testing some Java 8 Features for simulating product pricing in functional style
  */
 public class PricingLambdas {
 
-    private final List<Product> products = Arrays.asList(new Product("Clothing"),
+    private final List<Product> products = asList(new Product("Clothing"),
             new Product("Bags"),
             new Product("Shoes"),
             new Product("Lingerie"),
@@ -35,6 +36,16 @@ public class PricingLambdas {
         execute("parallel", () -> findPriceParallel());
         execute("composed CompletableFuture", () -> findPrice());
         printPricesStream();
+    }
+
+    @Test
+    public void testLambda() {
+
+        List<String> collected = Stream.of("a", "b", "hello")
+                .map(string -> string.toUpperCase())
+                .collect(toList());
+        assertEquals(asList("A", "B", "HELLO"), collected);
+
     }
 
     @Test(expected = Throwable.class)

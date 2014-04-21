@@ -58,6 +58,12 @@
             <artifactId>spring-boot-starter-remote-shell</artifactId>
         </dependency>
 
+      <!--  <dependency>
+            <groupId>com.sopovs.moradanen.spring.boot.undertow</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+            <version>0.2.1</version>
+        </dependency>-->
+
         <!--    <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-elasticsearch</artifactId>
@@ -120,6 +126,11 @@
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
+        </repository>
+        <repository>
+            <id>isopov-dintray</id>
+            <name>isopov Bintray</name>
+            <url>http://dl.bintray.com/isopov/maven/</url>
         </repository>
     </repositories>
     <pluginRepositories>
