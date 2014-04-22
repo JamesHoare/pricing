@@ -62,7 +62,7 @@ public class Product implements ProductPricing {
 
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
     enum PRODUCT_TYPE {
-        SHIPPING, PACKAGING, VOUCHER, SUBSCRIPTION, WEARABALE
+        SHIPPING, PACKAGING, VOUCHER, SUBSCRIPTION, WEARBALE
     }
 
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)

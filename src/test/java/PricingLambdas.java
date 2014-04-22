@@ -1,5 +1,7 @@
+import com.netaporter.pricing.util.NAPCollectors;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -42,7 +44,7 @@ public class PricingLambdas {
     public void testLambda() {
 
         List<String> collected = Stream.of("a", "b", "hello")
-                .map(string -> string.toUpperCase())
+                .map(String::toUpperCase)
                 .collect(toList());
         assertEquals(asList("A", "B", "HELLO"), collected);
 
@@ -90,7 +92,7 @@ public class PricingLambdas {
      */
     public List<Integer> findPrice() {
         List<CompletableFuture<Integer>> priceFutures = findPriceStream()
-                .collect(toList());
+                .collect(NAPCollectors.toImmutableList(ArrayList::new));
 
         return priceFutures.stream()
                 .map(CompletableFuture::join)

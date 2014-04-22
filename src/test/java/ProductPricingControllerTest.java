@@ -28,27 +28,27 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 public class ProductPricingControllerTest {
 
 
-        @Autowired
-        private WebApplicationContext applicationContext;
+    @Autowired
+    private WebApplicationContext applicationContext;
 
-        @Test
-        public void testRoutes() {
-            final MockMvc mockMvc = MockMvcBuilders
-                    .webAppContextSetup(applicationContext)
-                    .build();
+    @Test
+    public void testRoutes() {
+        final MockMvc mockMvc = MockMvcBuilders
+                .webAppContextSetup(applicationContext)
+                .build();
 
-            Stream.of("/products").forEach(path -> {
-                try {
-                    mockMvc
-                            .perform(get(path))
-                            .andExpect(status().isOk())
-                            .andExpect(content().contentType(MediaType.APPLICATION_JSON));
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        }
+        Stream.of("/products").forEach(path -> {
+            try {
+                mockMvc
+                        .perform(get(path))
+                        .andExpect(status().isOk())
+                        .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
+}
 
 
 
