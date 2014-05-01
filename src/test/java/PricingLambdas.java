@@ -1,4 +1,3 @@
-import com.netaporter.pricing.util.NAPCollectors;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ import java.util.concurrent.Executors;
 import java.util.function.Supplier;
 import java.util.stream.Stream;
 
+import static com.netaporter.pricing.util.NAPCollectors.toImmutableList;
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toList;
 import static junit.framework.TestCase.assertEquals;
@@ -92,7 +92,7 @@ public class PricingLambdas {
      */
     public List<Integer> findPrice() {
         List<CompletableFuture<Integer>> priceFutures = findPriceStream()
-                .collect(NAPCollectors.toImmutableList(ArrayList::new));
+                .collect(toImmutableList(ArrayList::new));
 
         return priceFutures.stream()
                 .map(CompletableFuture::join)
