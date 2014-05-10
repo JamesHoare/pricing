@@ -2,8 +2,8 @@ package com.netaporter.pricing;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -38,7 +38,11 @@ public class PricingApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(PricingApplication.class, args);
+        new SpringApplicationBuilder()
+                .showBanner(false)
+                .sources(PricingApplication.class)
+                .run(args);
+
 
     }
 
