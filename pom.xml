@@ -19,11 +19,17 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.0.2.RELEASE</version>
+        <version>1.1.0.M1</version>
     </parent>
 
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.mangofactory</groupId>
+            <artifactId>swagger-springmvc</artifactId>
+            <version>0.8.3</version>
+        </dependency>
 
         <!-- Add web support-->
         <dependency>
