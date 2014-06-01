@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.1.0.M1</version>
+        <version>1.1.0.BUILD-SNAPSHOT</version>
     </parent>
 
 
@@ -64,17 +64,11 @@
             <artifactId>spring-boot-starter-remote-shell</artifactId>
         </dependency>
 
-      <!--  <dependency>
-            <groupId>com.sopovs.moradanen.spring.boot.undertow</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-            <version>0.2.1</version>
-        </dependency>-->
 
-        <!--    <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-elasticsearch</artifactId>
-                <version>1.0.0.BUILD-SNAPSHOT</version>
-            </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+        </dependency>
 
 
         <!--
@@ -91,8 +85,6 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.1.0.Final</version>
         </dependency>
-
-
 
 
     </dependencies>
