@@ -11,9 +11,12 @@ import java.util.Optional;
 @Validated
 public interface ProductPricingRepository extends Repository<Product,Integer> {
 
-    Optional <Product> findProduct(Long id);
+    Optional<Product> findOne(Long id);
 
 
+    default Optional<Product> findProduct(Long id) {
+        return findOne(id);
+    }
 
 
 }
