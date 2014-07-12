@@ -3,7 +3,6 @@ package com.netaporter.pricing.domain;
 import org.springframework.data.repository.Repository;
 import org.springframework.validation.annotation.Validated;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -12,7 +11,7 @@ import java.util.Optional;
 @Validated
 public interface ProductPricingRepository extends Repository<Product,Integer> {
 
-    Optional<List<Product>> getProducts();
+    Optional <Product> findProduct(Long id);
 
 
 
