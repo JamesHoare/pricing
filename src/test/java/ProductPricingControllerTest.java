@@ -1,4 +1,6 @@
 import com.netaporter.pricing.PricingApplication;
+import com.netaporter.pricing.domain.Product;
+import com.netaporter.pricing.domain.ProductPricingRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +12,12 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -30,6 +36,9 @@ public class ProductPricingControllerTest {
     @Autowired
     private WebApplicationContext applicationContext;
 
+    @Autowired
+    private ProductPricingRepository productPricingRepository;
+
     @Test
     public void testRoutes() {
         final MockMvc mockMvc = MockMvcBuilders
@@ -46,7 +55,21 @@ public class ProductPricingControllerTest {
                 throw new RuntimeException(e);
             }
         });
+
+
     }
+
+    @Test
+    public void invokesDefaultMethod() {
+
+        Product product = productPricingRepository.save(new Product("shoes", "jimmy","jimmy choo"));
+        Optional<Product> result = productPricingRepository.findProduct(new Long(1));
+
+        assertThat(result.isPresent(), is(true));
+
+    }
+
+
 }
 
 
