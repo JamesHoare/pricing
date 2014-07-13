@@ -62,7 +62,7 @@ public class ProductPricingControllerTest {
     @Test
     public void invokesDefaultMethod() {
 
-        Product product = productPricingRepository.save(new Product("shoes", "jimmy","jimmy choo"));
+        //Product product = productPricingRepository.save(new Product("shoes", "jimmy","jimmy choo"));
         Optional<Product> result = productPricingRepository.findProduct(new Long(1));
 
         assertThat(result.isPresent(), is(true));
